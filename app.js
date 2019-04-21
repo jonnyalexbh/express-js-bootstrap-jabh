@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const routes = require('./app/routes');
 
 // app
 const app = express();
@@ -10,13 +11,7 @@ app.use(bodyParser.json());                         // support parsing of applic
 app.use(bodyParser.urlencoded({ extended: true })); // support parsing of application/x-www-form-urlencoded post data
 
 // routes
-app.get('/', function (req, res, next) {
-  res.send({ greeting: "hello world" });
-})
-
-app.post('/store-user', function (req, res, next) {
-  console.log(req.body);
-})
+app.use(routes);
 
 const server = app.listen(port, () => {
   console.log(`REST API running on http://localhost:${server.address().port}`);
