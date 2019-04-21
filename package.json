@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jonnyalexbh/express-js-bootstrap/issues"
   },
-  "homepage": "https://github.com/jonnyalexbh/express-js-bootstrap#readme"
+  "homepage": "https://github.com/jonnyalexbh/express-js-bootstrap#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }

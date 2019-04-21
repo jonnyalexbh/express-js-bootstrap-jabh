@@ -1,0 +1,12 @@
+# Dependency directory
+node_modules
+
+# Mac Files
+.DS_Store
+*/DS_Store
+
+# dotenv
+.env
+
+# VS Code
+.vscode/
