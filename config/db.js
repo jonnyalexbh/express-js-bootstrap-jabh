@@ -1,23 +1,26 @@
-{
-  "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+module.exports = {
+  development: {
+    username: 'postgres',
+    password: 'root',
+    database: 'express_js_bootstrap_dev',
+    host: 'localhost',
+    dialect: 'postgres',
+    logging: true,
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  testing: {
+    username: 'postgres',
+    password: 'root',
+    database: 'express_js_bootstrap_test',
+    host: '127.0.0.1',
+    dialect: 'postgres',
+    logging: false,
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-}
+  production: {
+    username: 'postgres',
+    password: 'root',
+    database: 'express_js_bootstrap_production',
+    host: '127.0.0.1',
+    dialect: 'postgres',
+    logging: false,
+  },
+};
