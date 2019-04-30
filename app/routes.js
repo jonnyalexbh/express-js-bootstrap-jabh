@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('./models');
 
 const router = express.Router();
 const olderAgeMiddleware = require('./middlewares/olderAge');
@@ -13,6 +14,13 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
   res.send({ greeting: 'hello world' });
 });
+
+router.get('/users', (req, res) => db.User.findAll()
+  .then(users => res.send(users))
+  .catch((err) => {
+    console.log('There was an error querying contacts', JSON.stringify(err));
+    return res.send(err);
+  }));
 
 router.get('/other-test', (req, res) => {
   res.send('other route');
