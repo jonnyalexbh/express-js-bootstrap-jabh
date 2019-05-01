@@ -4,12 +4,16 @@ const db = require('./models');
 const router = express.Router();
 const olderAgeMiddleware = require('./middlewares/olderAge');
 const isAdminMiddleware = require('./middlewares/isAdmin');
+const firstController = require('./controllers/FirstController');
 
 // middleware, applies for all routes
 router.use((req, res, next) => {
   console.log('Time:', Date.now());
   next();
 });
+
+router.get('/first-index', firstController.index);
+router.get('/first-show/:id', firstController.show);
 
 router.get('/', (req, res) => {
   res.send({ greeting: 'hello world' });
