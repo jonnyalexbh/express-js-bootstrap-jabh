@@ -1,10 +1,9 @@
 const express = require('express');
-const db = require('./models');
 
 const router = express.Router();
-const olderAgeMiddleware = require('./middlewares/olderAge');
-const isAdminMiddleware = require('./middlewares/isAdmin');
-const firstController = require('./controllers/FirstController');
+const olderAgeMiddleware = require('../app/middlewares/olderAge');
+const isAdminMiddleware = require('../app/middlewares/isAdmin');
+const firstController = require('../app/controllers/FirstController');
 
 // middleware, applies for all routes
 router.use((req, res, next) => {
@@ -18,13 +17,6 @@ router.get('/first-show/:id', firstController.show);
 router.get('/', (req, res) => {
   res.send({ greeting: 'hello world' });
 });
-
-router.get('/users', (req, res) => db.User.findAll()
-  .then(users => res.send(users))
-  .catch((err) => {
-    console.log('There was an error querying contacts', JSON.stringify(err));
-    return res.send(err);
-  }));
 
 router.get('/other-test', (req, res) => {
   res.send('other route');

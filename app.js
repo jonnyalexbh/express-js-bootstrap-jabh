@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./app/routes');
-const api = require('./app/api');
+const routes = require('./routes/web');
+const api = require('./routes/api');
 
 // app
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 // middlewares, parsing of application/json, application/x-www-form-urlencoded type post data
 app.use(bodyParser.json());
