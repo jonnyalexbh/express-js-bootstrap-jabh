@@ -15,11 +15,11 @@ router.get('/first-index', firstController.index);
 router.get('/first-show/:id', firstController.show);
 
 router.get('/', (req, res) => {
-  res.send({ greeting: 'hello world' });
+  res.send('hello world web')
 });
 
-router.get('/other-test', (req, res) => {
-  res.send('other route');
+router.get('/test', (req, res) => {
+  res.send('route test');
 });
 
 router.get('/show-age/:age/:admin?', [isAdminMiddleware, olderAgeMiddleware], (req, res) => {

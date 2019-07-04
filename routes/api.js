@@ -4,6 +4,10 @@ const db = require('../app/models');
 const api = express.Router();
 const countryController = require('../app/controllers/Api/CountryController');
 
+api.get('/', (req, res) => {
+  res.send({ data: 'index api rest' });
+});
+
 api.get('/countries', countryController.index);
 api.get('/country/:id', countryController.show);
 
@@ -13,5 +17,13 @@ api.get('/users', (req, res) => db.User.findAll()
     console.log('There was an error querying contacts', JSON.stringify(err));
     return res.send(err);
   }));
+
+api.post('/users', (req, res) =>
+  db.User.create({
+    firstName: req.body.name,
+    lastName: req.body.lastname,
+    email: req.body.email
+  }).then((result) => res.json(result))
+);
 
 module.exports = api;
