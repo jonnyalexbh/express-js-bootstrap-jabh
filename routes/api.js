@@ -3,6 +3,7 @@ const db = require('../app/models');
 
 const api = express.Router();
 const countryController = require('../app/controllers/Api/CountryController');
+const albumController = require('../app/controllers/Api/AlbumController');
 
 api.get('/', (req, res) => {
   res.send({ data: 'index api rest' });
@@ -10,6 +11,8 @@ api.get('/', (req, res) => {
 
 api.get('/countries', countryController.index);
 api.get('/country/:id', countryController.show);
+
+api.get('/albums', albumController.all);
 
 api.get('/users', (req, res) => db.User.findAll()
   .then(users => res.send(users))
