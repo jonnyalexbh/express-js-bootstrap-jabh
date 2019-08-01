@@ -6,3 +6,12 @@ exports.all = (_, res, next) =>
       res.send(albums);
     })
     .catch(next);
+
+exports.allAlbums = async (req, res, next) => {
+  try {
+    const albums = await getAlbums();
+    res.status(200).send(albums);
+  } catch (err) {
+    next(err);
+  }
+}

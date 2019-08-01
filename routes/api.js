@@ -13,6 +13,7 @@ api.get('/countries', countryController.index);
 api.get('/country/:id', countryController.show);
 
 api.get('/albums', albumController.all);
+api.get('/albums-async-await', albumController.allAlbums);
 
 api.get('/users', (req, res) => db.User.findAll()
   .then(users => res.send(users))
