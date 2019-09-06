@@ -32,5 +32,6 @@ api.post('/users', (req, res) =>
 );
 
 api.get('/read-file', AsyncjsController.readFile);
+api.get('/read-file-async', AsyncjsController.readFileAwait);
 
 module.exports = api;
