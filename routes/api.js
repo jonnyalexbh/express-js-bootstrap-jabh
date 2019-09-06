@@ -4,6 +4,7 @@ const db = require('../app/models');
 const api = express.Router();
 const countryController = require('../app/controllers/Api/CountryController');
 const albumController = require('../app/controllers/Api/AlbumController');
+const AsyncjsController = require('../app/controllers/Api/AsyncjsCode');
 
 api.get('/', (req, res) => {
   res.send({ data: 'index api rest' });
@@ -29,5 +30,7 @@ api.post('/users', (req, res) =>
     email: req.body.email
   }).then((result) => res.json(result))
 );
+
+api.get('/read-file', AsyncjsController.readFile);
 
 module.exports = api;
