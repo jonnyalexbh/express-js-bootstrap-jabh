@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes/web');
-const api = require('./routes/api');
+const routes = require('./app/routes');
 
 // app
 const app = express();
@@ -12,7 +11,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.use('/api', api);
 app.use(routes);
 
 const server = app.listen(port, () => {

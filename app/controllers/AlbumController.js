@@ -1,4 +1,4 @@
-const { getAlbums } = require('../../services/album');
+const { getAlbums } = require('../services/album');
 
 exports.all = (_, res, next) =>
   getAlbums()

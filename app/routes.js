@@ -2,8 +2,8 @@ const express = require('express');
 const db = require('../app/models');
 
 const api = express.Router();
-const countryController = require('../app/controllers/Api/CountryController');
-const albumController = require('../app/controllers/Api/AlbumController');
+const countryController = require('../app/controllers/CountryController');
+const albumController = require('../app/controllers/AlbumController');
 
 api.get('/', (req, res) => {
   res.send({ data: 'index api rest' });
