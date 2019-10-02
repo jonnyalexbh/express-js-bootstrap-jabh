@@ -5,4 +5,3 @@ exports.main = (req, res) => {
 exports.sampleMiddleware = (_, res) => {
   res.send({ data: 'middleware works' });
 };
-

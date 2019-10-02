@@ -1,6 +1,6 @@
-const app = require('./app'),
-  config = require('./config'),
-  logger = require('./app/logger');
+const app = require('./app');
+const config = require('./config');
+const logger = require('./app/logger');
 
 const port = config.common.api.port || 3000;
 
