@@ -1,18 +1,19 @@
 const db = require('../models');
 const logger = require('../logger');
+const errors = require('../errors');
 
 exports.sampleUsers = async (_, res) => {
   const user = await db.User.findAll();
   res.status(200).send(user);
 };
 
-exports.sampleShowUser = async (req, res) => {
+exports.sampleShowUser = async (req, res, next) => {
   try {
     const user = await db.User.findByPk(req.params.id);
-    res.status(200).send(user);
+    return res.status(200).send(user);
   } catch (error) {
     logger.error(error);
-    res.status(500).send(error);
+    return next(errors.defaultError(error.message));
   }
 };
 
