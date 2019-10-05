@@ -15,5 +15,10 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    "global-require": 0,
+    "no-param-reassign": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   },
+  
 };
