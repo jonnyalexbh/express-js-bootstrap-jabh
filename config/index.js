@@ -36,6 +36,9 @@ const config = {
     api: {
       port: process.env.PORT,
     },
+    albumsApi: {
+      url: process.env.PLACEHOLDER_URL,
+    },
   },
 };
 
