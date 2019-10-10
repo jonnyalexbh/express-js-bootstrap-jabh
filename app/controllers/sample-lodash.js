@@ -31,6 +31,12 @@ exports.sampleSortby = (_, res) => {
 
 exports.sampleRemove = (_, res) => {
   const removeKpisPe = [57, 91];
-  const removeKpis = kpis.filter((kpi) => removeKpisPe.indexOf(kpi.id) === -1);
+  // const removeKpis = kpis.filter((kpi) => removeKpisPe.indexOf(kpi.id) === -1);
+  const removeKpis = kpis.filter((kpi) => !removeKpisPe.includes(kpi.id));
   res.send(removeKpis);
+};
+
+exports.sampleFind = (_, res) => {
+  const findKpi = kpis.find((kpi) => kpi.id === 20);
+  res.send({ exist: !!findKpi });
 };
