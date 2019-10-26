@@ -4,7 +4,7 @@ const { sampleUsers, sampleShowUser, sampleCreateUser } = require('./controllers
 const {
   sampleRemoveLodash, sampleFind, sampleSortby, sampleRemove,
 } = require('./controllers/sample-lodash');
-const { timeByCountry } = require('./controllers/sample-moment');
+const { manipulateDate, timeByCountry } = require('./controllers/sample-moment');
 const isAdminMiddleware = require('./middlewares/isAdmin');
 const olderAgeMiddleware = require('./middlewares/olderAge');
 
@@ -19,5 +19,7 @@ exports.init = (app) => {
   app.get('/sample-find-kpi', sampleFind);
   app.get('/sample-remove-without-loadhs', sampleRemove);
   app.get('/remove-sortby-loadhs', sampleSortby);
-  app.get('/sample-utc', timeByCountry);
+
+  app.get('/sample-manipulate-date', manipulateDate);
+  app.get('/sample-time-by-country', timeByCountry);
 };
