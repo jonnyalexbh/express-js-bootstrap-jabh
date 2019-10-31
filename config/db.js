@@ -9,7 +9,7 @@ module.exports = {
     dialect: 'postgres',
     logging: true,
   },
-  testing: {
+  test: {
     username: config.username,
     password: config.password,
     database: config.name,

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "start-dev": "nodemon --inspect server"
+    "start-dev": "nodemon --inspect server",
+    "test": "./node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,8 @@
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^1.18.11"
+    "jest": "^24.9.0",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
   }
 }

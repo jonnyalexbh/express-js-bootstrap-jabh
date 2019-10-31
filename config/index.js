@@ -1,35 +1,10 @@
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
-
-if (ENVIRONMENT !== 'production') {
-  require('dotenv').config();
-}
-
-const configFile = `./${ENVIRONMENT}`;
-
-const isObject = (variable) => variable instanceof Object;
-
-/*
- * Deep copy of source object into tarjet object.
- * It does not overwrite properties.
- */
-const assignObject = (target, source) => {
-  if (target && isObject(target) && source && isObject(source)) {
-    Object.keys(source).forEach((key) => {
-      if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
-        target[key] = source[key];
-      } else {
-        assignObject(target[key], source[key]);
-      }
-    });
-  }
-  return target;
-};
+require('dotenv').config();
 
 const config = {
   common: {
     database: {
+      name: process.env.DB_NAME,
       host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
     },
@@ -42,5 +17,4 @@ const config = {
   },
 };
 
-const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+module.exports = config;

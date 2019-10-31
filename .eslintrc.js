@@ -20,5 +20,7 @@ module.exports = {
     "import/no-dynamic-require": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   },
-  
+  "env": {
+    "jest": true
+  }
 };
