@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server",
     "start-dev": "nodemon --inspect server",
-    "test": "NODE_ENV=testing ./node_modules/.bin/jest"
+    "test": "NODE_ENV=testing ./node_modules/.bin/jest",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   "homepage": "https://github.com/jonnyalexbh/express-js-bootstrap#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-wolox-logger": "^1.1.0",

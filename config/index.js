@@ -8,6 +8,9 @@ const config = {
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
     },
+    encryption: {
+      salt_sync: process.env.BCRYPT_SALT,
+    },
     api: {
       port: process.env.PORT,
     },

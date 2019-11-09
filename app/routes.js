@@ -1,4 +1,5 @@
 const { allAlbums } = require('./controllers/albums');
+const { getUsers, getUser, signUp } = require('./controllers/users');
 const { sampleJestBasic } = require('./controllers/sample-jest');
 const { main, sampleMiddleware } = require('./controllers/sample');
 const { sampleUsers, sampleShowUser, sampleCreateUser } = require('./controllers/sample-user');
@@ -20,6 +21,10 @@ exports.init = (app) => {
   app.get('/sample-find-kpi', sampleFind);
   app.get('/sample-remove-without-loadhs', sampleRemove);
   app.get('/remove-sortby-loadhs', sampleSortby);
+
+  app.get('/users', getUsers);
+  app.get('/users/:id', getUser);
+  app.post('/users', signUp);
 
   app.get('/sample-test', sampleJestBasic);
   app.get('/sample-manipulate-date', manipulateDate);

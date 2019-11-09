@@ -7,7 +7,7 @@ const app = require('../../app');
 jest.mock('axios');
 
 describe('albums', () => {
-  it('get list albums', (done) => {
+  it('should list all albums with success', (done) => {
     axios.get.mockResolvedValue({ data: mocksAlbums.allAlbums });
     request(app)
       .get('/albums')
@@ -18,7 +18,7 @@ describe('albums', () => {
         done();
       });
   });
-  it('get list albums with async', async () => {
+  it('should list all albums with success async', async () => {
     axios.get.mockResolvedValue({ data: mocksAlbums.allAlbums });
     const res = await request(app)
       .get('/albums');
