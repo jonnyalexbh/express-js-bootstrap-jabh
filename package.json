@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "start-dev": "nodemon --inspect server",
-    "test": "./node_modules/.bin/jest"
+    "test": "NODE_ENV=testing ./node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,9 @@
     "supertest": "^4.0.2"
   },
   "jest": {
-    "testRegex": "test/.*\\.(js|jsx)$"
+    "testRegex": "test/.*\\.(js|jsx)$",
+    "testPathIgnorePatterns": [
+      "mocks"
+    ]
   }
 }
