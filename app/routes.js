@@ -1,6 +1,7 @@
 const { allAlbums } = require('./controllers/albums');
 const { getUsers, getUser, signUp } = require('./controllers/users');
 const { sampleJestBasic } = require('./controllers/sample-jest');
+const { promiseAlbums, promiseAlbumsTwo } = require('./controllers/sample-request-promise');
 const { main, sampleMiddleware } = require('./controllers/sample');
 const { sampleUsers, sampleShowUser, sampleCreateUser } = require('./controllers/sample-user');
 const {
@@ -29,4 +30,7 @@ exports.init = (app) => {
   app.get('/sample-test', sampleJestBasic);
   app.get('/sample-manipulate-date', manipulateDate);
   app.get('/sample-time-by-country', timeByCountry);
+
+  app.get('/sample-promise-albums', promiseAlbums);
+  app.get('/sample-promise-albums-two', promiseAlbumsTwo);
 };
