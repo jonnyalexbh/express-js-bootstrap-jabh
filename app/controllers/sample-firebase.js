@@ -11,23 +11,43 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+const cycle = 'COL-2019-15';
 
-const products = (info) => info.map((product) => product.sku);
+const transformProducts = (info) => info.map((product) => product.sku);
 
 exports.getCollection = async (req, res) => {
   const ref = db
     .collection('orders')
-    .where('ciclo', '==', 'COL-2019-16');
+    .where('ciclo', '==', cycle);
 
   const orders = await ref.get();
   const infoExcel = orders.docs.map((order) => (
     {
       orderId: order.id,
       cn: order.data().cn,
-      sku: products(order.data().productos).join('; '),
+      sku: transformProducts(order.data().productos).join('; '),
       totalDiscount: order.data().totalCDesc,
       totalWithoutDesc: order.data().totalSDesc,
     }
   ));
   res.send(infoExcel);
+};
+
+exports.getProducts = async (req, res) => {
+  const ref = db
+    .collection('orders')
+    .where('ciclo', '==', cycle);
+
+  const orders = await ref.get();
+  const products = orders.docs.map((order) => order.data().productos);
+  const mergeProducts = products.reduce((a, b) => a.concat(b), []);
+
+  const quantityProducts = mergeProducts.map((product) => (
+    {
+      sku: product.sku.toString(),
+      cantidad: product.cantidad,
+    }
+  ));
+
+  res.send(quantityProducts);
 };

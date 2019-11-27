@@ -2,7 +2,7 @@ const { allAlbums } = require('./controllers/albums');
 const { getUsers, getUser, signUp } = require('./controllers/users');
 const { sampleJestBasic } = require('./controllers/sample-jest');
 const { promiseAlbums, promiseAlbumsTwo } = require('./controllers/sample-request-promise');
-const { getCollection } = require('./controllers/sample-firebase');
+const { getCollection, getProducts } = require('./controllers/sample-firebase');
 const { main, sampleMiddleware } = require('./controllers/sample');
 const { sampleUsers, sampleShowUser, sampleCreateUser } = require('./controllers/sample-user');
 const {
@@ -35,5 +35,6 @@ exports.init = (app) => {
   app.get('/sample-promise-albums', promiseAlbums);
   app.get('/sample-promise-albums-two', promiseAlbumsTwo);
 
-  app.get('/sample-firebase', getCollection);
+  app.get('/spl-firebase', getCollection);
+  app.get('/spl-firebase-get-products', getProducts);
 };
