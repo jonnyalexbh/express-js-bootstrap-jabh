@@ -7,7 +7,7 @@ const options = {
 
 exports.promiseAlbums = async (req, res) => {
   const albums = await request(options);
-  res.send(albums);
+  res.send({ albums });
 };
 
 const optionsTwo = {
