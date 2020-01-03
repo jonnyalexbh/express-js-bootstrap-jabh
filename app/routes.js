@@ -13,6 +13,7 @@ const {
 const { manipulateDate, timeByCountry } = require('./controllers/sample-moment');
 const isAdminMiddleware = require('./middlewares/isAdmin');
 const olderAgeMiddleware = require('./middlewares/olderAge');
+const { callbackPrintDate } = require('./controllers/sample-callbacks');
 
 exports.init = (app) => {
   app.get('/', main);
@@ -43,4 +44,6 @@ exports.init = (app) => {
   app.get('/spl-filter-map', sampleFilterMap);
   app.get('/spl-reduce', sampleReduce);
   app.get('/spl-reduce-merge', sampleReduceMerge);
+
+  app.get('/spl-async-callbacks', callbackPrintDate);
 };
