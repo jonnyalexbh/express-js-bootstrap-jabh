@@ -15,7 +15,7 @@ const isAdminMiddleware = require('./middlewares/isAdmin');
 const olderAgeMiddleware = require('./middlewares/olderAge');
 const { callbackPrintDate } = require('./controllers/sample-callbacks');
 const { rickData } = require('./controllers/sample-callbacks-challenge');
-const { samplePromiseAll } = require('./controllers/sample-promise');
+const { infoRick } = require('./controllers/sample-promise');
 
 exports.init = (app) => {
   app.get('/', main);
@@ -49,5 +49,5 @@ exports.init = (app) => {
 
   app.get('/spl-async-callbacks', callbackPrintDate);
   app.get('/spl-challenge-callbacks', rickData);
-  app.get('/spl-promise', samplePromiseAll);
+  app.get('/spl-promise', infoRick);
 };

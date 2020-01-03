@@ -1,4 +1,27 @@
+const { fetchDataRick } = require('../services/rickandmortyapi');
+
+const URI = 'https://rickandmortyapi.com/api/character/';
 const active = true;
+
+/* ---------------- infoRick ---------------- */
+
+exports.infoRick = () => {
+  fetchDataRick(URI)
+    .then((data) => {
+      console.log(data.info.count);
+      return fetchDataRick(`${URI}${data.results[0].id}`);
+    })
+    .then((data) => {
+      console.log(data.name);
+      return fetchDataRick(data.origin.url);
+    })
+    .then((data) => {
+      console.log(data.dimension);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 /* ---------------- samplePromise ---------------- */
 
