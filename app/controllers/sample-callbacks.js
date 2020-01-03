@@ -61,6 +61,7 @@ const fullName = (name, lastName) => {
   console.log('finished callbackFullName');
   return `${name} ${lastName}`;
 };
+
 const callbackFullName = (name, lastName, callback) => {
   console.log('init callbackFullName');
   return callback(name, lastName);
