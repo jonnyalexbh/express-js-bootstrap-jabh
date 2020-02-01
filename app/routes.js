@@ -5,6 +5,7 @@ const { promiseAlbums, promiseAlbumsTwo } = require('./controllers/sample-reques
 const { getCollection, getProducts } = require('./controllers/sample-firebase');
 const {
   main, sampleMiddleware, sampleFilterMap, sampleReduce, sampleReduceMerge,
+  generateReport, accordingCountry,
 } = require('./controllers/sample');
 const { sampleUsers, sampleShowUser, sampleCreateUser } = require('./controllers/sample-user');
 const {
@@ -46,6 +47,8 @@ exports.init = (app) => {
   app.get('/spl-filter-map', sampleFilterMap);
   app.get('/spl-reduce', sampleReduce);
   app.get('/spl-reduce-merge', sampleReduceMerge);
+  app.get('/generate-report', generateReport);
+  app.get('/according-country', accordingCountry);
 
   app.get('/spl-async-callbacks', callbackPrintDate);
   app.get('/spl-challenge-callbacks', rickData);

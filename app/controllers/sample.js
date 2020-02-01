@@ -33,3 +33,32 @@ exports.sampleReduceMerge = (_, res) => {
   }, []);
   res.send(mergeproducts);
 };
+
+const builderReport = {
+  DAY: 'day report',
+  QUARTER: 'quarter report',
+  HALF: 'half report',
+  YEAR: 'year report',
+};
+
+exports.generateReport = ({ query: { split } }, res) => {
+  const result = builderReport[split];
+  res.send(result);
+};
+
+const greetingCo = (name) => `Hello ${name} in Colombia`;
+const greetingPe = (name) => `Hello ${name} in Peru`;
+const greetingAr = (name) => `Hello ${name} in Argentina`;
+const greetingCl = (name) => `Hello ${name} in Chile`;
+
+const builderGreeting = {
+  CO: (name) => greetingCo(name),
+  PE: (name) => greetingPe(name),
+  AR: (name) => greetingAr(name),
+  CL: (name) => greetingCl(name),
+};
+
+exports.accordingCountry = ({ query: { country, name } }, res) => {
+  const result = builderGreeting[country](name);
+  res.send(result);
+};
