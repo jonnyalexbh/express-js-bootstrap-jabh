@@ -36,4 +36,12 @@ module.exports = {
       },
     },
   },
+  GetUser: {
+    type: 'object',
+    properties: {
+      items: {
+        $ref: '#/components/schemas/User',
+      },
+    },
+  },
 };

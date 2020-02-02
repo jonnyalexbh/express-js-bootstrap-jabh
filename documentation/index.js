@@ -2,7 +2,7 @@ const config = require('../config');
 const schemas = require('./schemas');
 const paths = require('./paths');
 
-const port = config.common.api.port || 8080;
+const port = config.common.api.port || 3000;
 
 module.exports = {
   openapi: '3.0.1',

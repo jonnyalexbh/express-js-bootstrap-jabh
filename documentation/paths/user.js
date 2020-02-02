@@ -64,4 +64,34 @@ module.exports = {
       },
     },
   },
+  '/users/{id}': {
+    get: {
+      tags: ['CRUD operations'],
+      description: 'Get user',
+      operationId: 'getUser',
+      parameters: [
+        {
+          name: 'id',
+          in: 'path',
+          schema: {
+            type: 'integer',
+            default: 1,
+          },
+          required: true,
+        },
+      ],
+      responses: {
+        200: {
+          description: 'User were obtained',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/User',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 };
