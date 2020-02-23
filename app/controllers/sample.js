@@ -1,4 +1,6 @@
-const { cities, products } = require('../constants');
+const moment = require('moment');
+const { chunk } = require('lodash');
+const { cities, products, elasticsearch } = require('../constants');
 
 exports.main = (req, res) => {
   res.send({ data: 'working example' });
@@ -61,4 +63,20 @@ const builderGreeting = {
 exports.accordingCountry = ({ query: { country, name } }, res) => {
   const result = builderGreeting[country](name);
   res.send(result);
+};
+
+exports.separateTransactionsBy = (req, res) => {
+  const quarters = [1, 2, 3, 4];
+
+  const transactions = elasticsearch.map((item) => ({
+    quarter: moment(item.key_as_string).quarter(),
+    amount: item.amount.value,
+  }));
+
+  const billingData = quarters
+    .map((quarter) => chunk(transactions
+      .filter((transations) => transations.quarter === quarter)
+      .map(({ amount }) => amount), 3));
+
+  res.send(billingData);
 };

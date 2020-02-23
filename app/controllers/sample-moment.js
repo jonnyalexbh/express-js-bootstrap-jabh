@@ -33,6 +33,29 @@ exports.manipulateDate = (req, res) => {
   const momentExtractDay = moment().date();
   const momentExtractHour = moment().hour();
   const momentExtractMinutes = moment().minutes();
+  const twoYearsPrevious = moment()
+    .subtract(2, 'year')
+    .startOf('day')
+    .startOf('year');
+
+  const firstDayCurrentMonth = moment()
+    .startOf('day')
+    .startOf('month');
+
+  const finalDayCurrentYear = moment()
+    .endOf('year').utc('America/Bogota');
+
+  const firstDayYear = moment()
+    .locale('es')
+    .startOf('month')
+    .startOf('year')
+    .format('D MMM YYYY');
+
+  const endtDayYear = moment()
+    .locale('es')
+    .endOf('month')
+    .endOf('year')
+    .format('D MMM YYYY');
 
   const birthdayDate = '2019-09-26T20:30:54.660Z';
   const birthdaySubtractTwoDays = moment(birthdayDate).subtract(4, 'd');
@@ -53,5 +76,9 @@ exports.manipulateDate = (req, res) => {
     birthdayDate,
     birthdaySubtractTwoDays,
     birthdayAddTwoDays,
+    twoYearsPrevious,
+    firstDayCurrentMonth,
+    finalDayCurrentYear,
+    initialAndfinalDayOfYear: `${firstDayYear} - ${endtDayYear}`.replace(/[.]/g, ''),
   });
 };
