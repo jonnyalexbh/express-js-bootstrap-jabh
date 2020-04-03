@@ -17,6 +17,7 @@ const olderAgeMiddleware = require('./middlewares/olderAge');
 const { callbackPrintDate } = require('./controllers/sample-callbacks');
 const { rickData } = require('./controllers/sample-callbacks-challenge');
 const { infoRick } = require('./controllers/sample-promise');
+const dynamodb = require('./controllers/sample-basic-dynamodb');
 
 exports.init = (app) => {
   app.get('/', main);
@@ -54,4 +55,6 @@ exports.init = (app) => {
   app.get('/spl-async-callbacks', callbackPrintDate);
   app.get('/spl-challenge-callbacks', rickData);
   app.get('/spl-promise', infoRick);
+
+  app.get('/spl-get-logs', dynamodb.getAudit);
 };
