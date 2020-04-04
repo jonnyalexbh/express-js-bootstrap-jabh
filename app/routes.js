@@ -18,6 +18,7 @@ const { callbackPrintDate } = require('./controllers/sample-callbacks');
 const { rickData } = require('./controllers/sample-callbacks-challenge');
 const { infoRick } = require('./controllers/sample-promise');
 const dynamodb = require('./controllers/sample-basic-dynamodb');
+const { getLogAudit, createAudit } = require('./controllers/sample-dynamodb');
 
 exports.init = (app) => {
   app.get('/', main);
@@ -57,4 +58,6 @@ exports.init = (app) => {
   app.get('/spl-promise', infoRick);
 
   app.get('/spl-get-logs', dynamodb.getAudit);
+  app.get('/spl-get-log', getLogAudit);
+  app.post('/spl-store-log', createAudit);
 };

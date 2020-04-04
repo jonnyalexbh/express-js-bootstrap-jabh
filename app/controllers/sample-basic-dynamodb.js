@@ -5,9 +5,9 @@ AWS.config.update({
   endpoint: 'http://localhost:8000',
 });
 
-exports.getAudit = (_, res) => {
-  const docClient = new AWS.DynamoDB.DocumentClient();
-  const id = '2';
+exports.getAudit = (req, res) => {
+  const db = new AWS.DynamoDB.DocumentClient();
+  const { id } = req.query;
 
   const params = {
     TableName: 'audit-development',
@@ -20,8 +20,8 @@ exports.getAudit = (_, res) => {
     },
   };
 
-  docClient.query(params)
+  db.query(params)
     .promise()
     .then((info) => res.send(info))
-    .catch(console.log);
+    .catch((error) => res.send(error));
 };
