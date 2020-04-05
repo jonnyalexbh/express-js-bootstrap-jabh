@@ -19,7 +19,10 @@ exports.sampleShowUser = async (req, res, next) => {
 
 exports.sampleCreateUser = async (req, res) => {
   const user = await db.User.create({
-    firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password,
   });
   res.status(201).send(user);
 };

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app-nodejs-jabh:
+    build: .
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: testing
+      DATABASE_URL: postgres://userpg:secret1189@db:5432/testdb
+      PORT: 3000
+    container_name: jabh-nodejs
+    ports:
+      - "8080:3000"
+    # command: npx sequelize-cli db:migrate
+  db:
+    image: postgres
+    container_name: jabh-postgres
+    ports:
+      - "5432:5432"
+    environment:
+        POSTGRES_USER: userpg
+        POSTGRES_PASSWORD: secret1189
+        POSTGRES_DB: testdb
