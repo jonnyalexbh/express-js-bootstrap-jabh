@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "start-dev": "nodemon --inspect server.js",
+    "start:dev": "nodemon -L --inspect server.js",
     "test": "NODE_ENV=testing ./node_modules/.bin/jest",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate"

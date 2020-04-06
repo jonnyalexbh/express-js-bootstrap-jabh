@@ -11,6 +11,9 @@ services:
     container_name: jabh-nodejs
     ports:
       - "8080:3000"
+    volumes:
+      - ./:/usr/src
+      - /usr/src/node_modules
     # command: npx sequelize-cli db:migrate
   db:
     image: postgres
