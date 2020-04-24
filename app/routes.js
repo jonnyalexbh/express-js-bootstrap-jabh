@@ -19,6 +19,7 @@ const { rickData } = require('./controllers/sample-callbacks-challenge');
 const { infoRick } = require('./controllers/sample-promise');
 const dynamodb = require('./controllers/sample-basic-dynamodb');
 const { getLogAudit, createAudit } = require('./controllers/sample-dynamodb');
+const { getFileS3 } = require('./controllers/sample-basic-s3');
 
 exports.init = (app) => {
   app.get('/', main);
@@ -60,4 +61,6 @@ exports.init = (app) => {
   app.get('/spl-get-logs', dynamodb.getAudit);
   app.get('/spl-get-log', getLogAudit);
   app.post('/spl-store-log', createAudit);
+
+  app.get('/spl-get-file-s3', getFileS3);
 };
