@@ -13,6 +13,7 @@ const {
 } = require('./controllers/sample-lodash');
 const { manipulateDate, timeByCountry } = require('./controllers/sample-moment');
 const isAdminMiddleware = require('./middlewares/isAdmin');
+const { validateCountryId, validate, validateGetCountry } = require('./middlewares/validation');
 const olderAgeMiddleware = require('./middlewares/olderAge');
 const { callbackPrintDate } = require('./controllers/sample-callbacks');
 const { rickData } = require('./controllers/sample-callbacks-challenge');
@@ -20,6 +21,7 @@ const { infoRick } = require('./controllers/sample-promise');
 const dynamodb = require('./controllers/sample-basic-dynamodb');
 const { getLogAudit, createAudit } = require('./controllers/sample-dynamodb');
 const { getFileS3 } = require('./controllers/sample-basic-s3');
+const { getCountry } = require('./controllers/countries');
 
 exports.init = (app) => {
   app.get('/', main);
@@ -63,4 +65,6 @@ exports.init = (app) => {
   app.post('/spl-store-log', createAudit);
 
   app.get('/spl-get-file-s3', getFileS3);
+  app.get('/get-country-one', [validateCountryId, validate], getCountry);
+  app.get('/get-country-two', validateGetCountry, getCountry);
 };
