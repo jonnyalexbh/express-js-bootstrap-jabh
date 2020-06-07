@@ -13,6 +13,7 @@ const {
 } = require('./controllers/sample-lodash');
 const { manipulateDate, timeByCountry } = require('./controllers/sample-moment');
 const isAdminMiddleware = require('./middlewares/isAdmin');
+const { getCountryValidation } = require('./middlewares/schemas_validator');
 const { validateCountryId, validate, validateGetCountry } = require('./middlewares/validation');
 const olderAgeMiddleware = require('./middlewares/olderAge');
 const { callbackPrintDate } = require('./controllers/sample-callbacks');
@@ -67,4 +68,5 @@ exports.init = (app) => {
   app.get('/spl-get-file-s3', getFileS3);
   app.get('/get-country-one', [validateCountryId, validate], getCountry);
   app.get('/get-country-two', validateGetCountry, getCountry);
+  app.get('/get-country-three', getCountryValidation, getCountry);
 };
