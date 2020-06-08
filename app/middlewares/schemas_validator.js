@@ -1,5 +1,5 @@
 const { checkSchema, validationResult } = require('express-validator');
-const { getCountrySchema } = require('../schemas/countries');
+const { getCountrySchema, postCountrySchema } = require('../schemas/countries');
 
 const validate = (req, res, next) => {
   const errorMessages = validationResult(req).array();
@@ -10,3 +10,4 @@ const validate = (req, res, next) => {
 };
 
 exports.getCountryValidation = [checkSchema(getCountrySchema), validate];
+exports.postCountryValidation = [checkSchema(postCountrySchema), validate];
