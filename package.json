@@ -28,7 +28,7 @@
     "express": "^4.16.4",
     "express-validator": "^6.5.0",
     "firebase-admin": "^8.8.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "pg": "^7.10.0",
     "pg-hstore": "^2.3.2",
