@@ -8,9 +8,6 @@ const {
   generateReport, accordingCountry, separateTransactionsBy,
 } = require('./controllers/sample');
 const { sampleUsers, sampleShowUser, sampleCreateUser } = require('./controllers/sample-user');
-const {
-  sampleRemoveLodash, sampleFind, sampleSortby, sampleRemove,
-} = require('./controllers/sample-lodash');
 const { manipulateDate, timeByCountry } = require('./controllers/sample-moment');
 const isAdminMiddleware = require('./middlewares/isAdmin');
 const { getCountryValidation, postCountryValidation } = require('./middlewares/schemas_validator');
@@ -31,10 +28,6 @@ exports.init = (app) => {
   app.get('/sample-users', sampleUsers);
   app.get('/sample-show-user/:id', sampleShowUser);
   app.post('/sample-create-user', sampleCreateUser);
-  app.get('/sample-remove-lodash', sampleRemoveLodash);
-  app.get('/sample-find-kpi', sampleFind);
-  app.get('/sample-remove-without-loadhs', sampleRemove);
-  app.get('/remove-sortby-loadhs', sampleSortby);
 
   app.get('/users', getUsers);
   app.get('/users/:id', getUser);
